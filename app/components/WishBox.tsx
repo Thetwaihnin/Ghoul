@@ -11,9 +11,12 @@ import { LiaBackwardSolid } from "react-icons/lia";
 const WishBox = ({ setComplete, open, setShowBox, setShowCards }: NavType) => {
   const [wish, setWish] = useState("");
   const [boxOpen, setBoxOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    localStorage.setItem("wish", value);
+    setValue(value);
     setComplete?.(true);
     setWish("");
     console.log(wish);
@@ -66,6 +69,7 @@ const WishBox = ({ setComplete, open, setShowBox, setShowCards }: NavType) => {
           <div className="relative w-full min-w-[200px] mt-[25px]">
             <textarea
               required
+              onChange={(e) => setValue(e.target.value)}
               className="peer h-full min-h-[150px] border-2 w-full resize-none rounded-[7px] border-blue-gray-200 bg-transparent px-[13px] py-[11px] font-serif 
     text-sm font-normal text-[#09ff00] outline-none placeholder-shown:font-nosifer
     transition-all placeholder-shown:border placeholder-shown:border-blue-400
