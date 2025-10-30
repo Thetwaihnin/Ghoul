@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Are+You+Serious&family=Bitcount+Single+Ink:wght@306&family=Creepster&family=Griffy&family=Henny+Penny&family=Kablammo&family=Lacquer&family=Nosifer&family=Raleway:ital,wght@0,100..900;1,100..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "tailwindcss";
+
+/*  */
+@layer utilities {
+  .font-bitcount { font-family: var(--font-bitcount); }
+  .font-susemono { font-family: var(--font-suse-mono); }
+  .font-creepster { font-family: var(--font-creepster); }
+  .font-henny { font-family: var(--font-henny-penny); }
+  .font-raleway { font-family: var(--font-raleway); }
+  .font-ubuntu { font-family: var(--font-ubuntu); }
+  .font-nosifer { font-family: var(--font-nosifer); }
+  .font-serious { font-family: var(--font-serious); }
+  .font-kablammo { font-family: var(--font-kablammo); }
+  .font-griffy { font-family: var(--font-griffy); }
+  .font-lacquer { font-family: var(--font-lacquer); }
+}
+
+.drop {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: drop 0.2s ease forwards; /* Duration set to 0.2s */
+}
+@keyframes drop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.clip-envelope {
+  clip-path: polygon(100% 0, 0 0, 49% 100%);
+}
+#message {
+  clip-path: polygon(
+    15% 78%,
+    0 39%,
+    39% 0,
+    100% 38%,
+    75% 100%,
+    41% 86%,
+    0 100%
+  );
+}
+.relative:hover .clip-envelope {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 320px;
+  height: 350px;
+  perspective: 1000px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  /* From https://css.glass */
+background: rgba(31, 182, 204, 0.19);
+border-radius: 12px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* backdrop-filter: blur(5.5px); */
+/* -webkit-backdrop-filter: blur(5.5px); */
+border: 1px solid rgba(31, 182, 204, 0.37);
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-front {
+  /* background-color: white; */
+  /* From https://css.glass */
+  background: rgba(31, 182, 204, 0.19);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(31, 182, 204, 0.37);
+  background-position: center;
+  background-size: cover;
+  /* filter: blur(2); */
+  color: black;
+  z-index: 2;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+  transition-duration: 3s;
+}
+
+#cardContainer {
+  position: relative;
+  min-width: 320px;
+  height: 400px;
+  padding-bottom: 50px;
+  margin-top: 3rem;
+}
+.card {
+  transition: opacity 0.5s ease;
+}
+.card.hidden {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.card.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+@media (max-width: 480px) {
+  .flip-card {
+    width: 260px;
+    height: 350px;
+  }
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+  }
+  #cardContainer {
+    min-width: 260px;
+  }
+}
+
+.neon-text {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e,
+    0 0 40px #ff005e, 0 0 80px #ff005e;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e,
+      0 0 40px #ff005e, 0 0 80px #ff005e;
+  }
+  100% {
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff,
+      0 0 80px #00d4ff, 0 0 160px #00d4ff;
+  }
+}
+
+.character img {
+  filter: grayscale(100%) brightness(0.5);
+  transition: filter 0.3s ease;
+}
+
+.welcome {
+  text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e,
+    0 0 40px #ff005e, 0 0 80px #ff005e;
+}
+
+.bd {
+  text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff,
+    0 0 80px #00d4ff, 0 0 160px #00d4ff;
+}
+
+.glass-cardy {
+  width: 240px;
+  height: 360px;
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 22px 11px rgba(255, 255, 255, 1.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+.glowing-shadow {
+  border-radius: 12px;
+  box-shadow: 20px 10px 30px rgba(241, 220, 58, 0.6),
+    10px 0 30px 10px rgba(0, 255, 255, 0.6);
+  animation: glowing-border 4s infinite alternate;
+}
+
+/* .shadow-y {
+  border-radius: 12px;
+  box-shadow: 20px 10px 30px rgba(251, 253, 94, 0.6),
+              10px 0 30px 10px rgba(97, 246, 246, 0.6); 
+  animation: glowing-y 2s infinite alternate;
+} */
+/* 1. Define the animation */
+@keyframes glowing-border {
+  0% {
+    box-shadow: 0 0 5px #ef3d3a, 0 0 10px #ef3d3a, 0 0 15px #ef3d3a; /* Magenta-ish */
+  }
+  33% {
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff; /* Cyan-ish */
+  }
+  66% {
+    box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00; /* Yellow-ish */
+  }
+  100% {
+    box-shadow: 0 0 5px #ef3d3a, 0 0 0 #ef3d3a, 0 0 15px #ef3d3a;
+  }
+}
+
+.shadow-y {
+  border-radius: 12px;
+  animation: glowing-y 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowing-y {
+  0% {
+    box-shadow: 0 0 10px rgba(240, 149, 149, 0.4),
+      0 0 20px rgba(73, 239, 58, 0.3), 0 0 30px rgba(58, 188, 239, 0.2);
+  }
+  25% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.4),
+      0 0 60px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 13, 0.5), 0 0 50px rgba(0, 255, 234, 0.4),
+      0 0 75px rgba(255, 25, 0, 0.3);
+  }
+  75% {
+    box-shadow: 0 0 35px rgba(222, 233, 23, 0.6),
+      0 0 70px rgba(239, 58, 136, 0.4), 0 0 100px rgba(91, 239, 58, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 50px rgba(239, 58, 136, 0.5),
+      0 0 100px rgba(91, 239, 58, 0.3), 0 0 150px rgba(0, 255, 234, 0.2);
+  }
+}
+
+/* 2. Apply the styles to your component */
+.glowing-border-box {
+  /* Initial border/outline for visibility (optional) */
+  border: 2px solid rgba(26, 73, 214, 0.5);
+  animation: glowing-border 4s infinite alternate; /* 4s duration, repeats infinitely, alternates direction */
+}
+/* bg-violet-300/30 backdrop-blur-sm */
+.clip-path {
+  clip-path: polygon(10% 25%, 35% 25%, 35% 0, 65% 0%, 65% 25%, 90% 25%, 90% 39%, 65% 39%, 65% 100%, 35% 100%, 35% 39%, 10% 39%);
+}
+
+
+.page-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* .stf__parent {
+  overflow: visible !important;
+} */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+

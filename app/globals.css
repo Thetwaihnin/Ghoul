@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Are+You+Serious&family=Bitcount+Single+Ink:wght@306&family=Creepster&family=Griffy&family=Henny+Penny&family=Kablammo&family=Lacquer&family=Nosifer&family=Raleway:ital,wght@0,100..900;1,100..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -5,22 +6,111 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@import "tailwindcss";
+
+@layer utilities {
+  .font-bitcount { font-family: var(--font-bitcount); }
+  .font-susemono { font-family: var(--font-suse-mono); }
+  .font-creepster { font-family: var(--font-creepster); }
+  .font-henny-penny { font-family: var(--font-henny-penny); }
+  .font-raleway { font-family: var(--font-raleway); }
+  .font-ubuntu { font-family: var(--font-ubuntu); }
+  .font-nosifer { font-family: var(--font-nosifer); }
+  .font-serious { font-family: var(--font-serious); }
+  .font-kablammo { font-family: var(--font-kablammo); }
+  .font-griffy { font-family: var(--font-griffy); }
+  .font-lacquer { font-family: var(--font-lacquer); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /*
+  --- Colors ---
+  The v3 'colors' theme extension translates to CSS variables under the --color namespace.
+  */
+  --color-neogreen: #79EC15;
+  --color-purple: #C415EC;
+  --color-red-custom: #FF4500; 
+  --color-blood: #880808;
+  --color-green-10: #09ff00; 
+  --color-purple100: #8A2BE2;
+
+ 
+  --shadow-inset-indigo: inset 0 2px 6px rgba(99, 102, 241, 0.6);
+  
+  /*
+  --- Font Family ---
+  Custom font families are defined under the --font namespace.
+  */
+  --font-bitcount: "Bitcount Single Ink", sans-serif;
+  --font-creepster: "Creepster", cursive;
+  --font-henny-penny: "Henny Penny", cursive;
+  --font-raleway: "Raleway", sans-serif;
+  --font-suse-mono: "SUSE Mono", monospace;
+  --font-ubuntu: "Ubuntu", sans-serif;
+  --font-nosifer: "Nosifer", cursive;
+  --font-serious: "Are You Serious", cursive;
+  --font-kablammo: "Kablammo", cursive;
+  --font-griffy: "Griffy", cursive;
+  --font-lacquer: "Lacquer", cursive;
+
+  /*
+  --- Animation ---
+  Tailwind v4's animation setup is more CSS-native.
+  Keyframes are typically defined with standard @keyframes and then referenced under the --animate namespace.
+  The animation *properties* (duration, timing, iteration, etc.) are often set using utility classes
+  like `duration-500`, `linear`, `infinite` or defined in theme variables.
+  */
+  --animate-rainbow: rainbow 5s linear infinite;
+  --animate-boxing: myAnimation 5s linear 2s infinite alternate;
+}
+
+@keyframes myAnimation {
+  0%,
+  100% {
+    border-color: #ff0000;
+    box-shadow: 0 0 3px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+  }
+  25% {
+    border-color: #ff7f00;
+    box-shadow: 0 0 3px #ff7f00, 0 0 10px #ff7f00, 0 0 20px #ff7f00;
+  }
+  50% {
+    border-color: #0000ff;
+    box-shadow: 0 0 3px #0000ff, 0 0 10px #0000ff, 0 0 20px #0000ff;
+  }
+  75% {
+    border-color: #8b00ff;
+    box-shadow: 0 0 3px #8b00ff, 0 0 10px #8b00ff, 0 0 20px #8b00ff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes rainbow {
+  0%,
+  100% {
+    border-color: #bff7ff;
+    box-shadow: 0 0 3px #bff7ff, 0 0 10px #bff7ff, 0 0 20px #bff7ff;
+  }
+  20% {
+    border-color: #80eeff;
+    box-shadow: 0 0 3px #80eeff, 0 0 10px #80eeff, 0 0 20px #80eeff;
+  }
+  50% {
+    border-color: #bff7ff;
+    box-shadow: 0 0 3px #bff7ff, 0 0 10px #bff7ff, 0 0 20px #bff7ff;
+  }
+  70% {
+    border-color: #80eeff;
+    box-shadow: 0 0 3px #80eeff, 0 0 10px #80eeff, 0 0 20px #80eeff;
+  }
 }
+
+/* Define the utility class based on your custom animation config */
+.animate-rainbow {
+  animation: rainbow 5s linear infinite;
+}
+
+.green-border {
+  border: '4px';
+  border-color: "#09ff00";
+}
+
